@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <title>
+    JAYKO News |
+    
+      Popular
+    
+  </title>
+    <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+  </head>
+  
+  <body>
+    <header>
+      <h1>
+        JAYKO News
+      </h1>
+      {%if order == 'new'%}
+      <div>
+      Order by:
+      <a href="/?order_by=popular">popular</a>
+        |
+        <strong>New</strong>
+      
+      </div>
+      {%else%}
+      <div>
+        Order by:
+        <strong>Popular</strong>
+      |
+      <a href="/?order_by=new">New</a>  
+        
+      </div>
+      {%endif%}
+    </header>
+    <main>
+
+      {% for dict_lists in lists %}
+        <div>
+          <div>
+            <a href="/{{dict_lists['objectID']}}">
+              <h3>{{dict_lists['title']}}</h3>
+            </a>
+            (<a href="{{dict_lists['url']}}" target="_blanl">{{dict_lists['url']}}</a>)
+          </div>
+          <div>
+            {{dict_lists['points']}} points | By: {{dict_lists['author']}} | {{dict_lists['num_comments']}} comments
+          </div>
+        </div>
+        <hr>
+      {%endfor%}
+    </main>
+  </body>
+
+</html>

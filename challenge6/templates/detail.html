@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+</head>
+
+<body>
+    <header>
+      <h1>{{title_lists['title']}}</h1>
+      <div>
+        {{title_lists['points']}} points | By {{title_lists['author']}} | <a href="{{title_lists['url']}}" target="_blank">{{title_lists['url']}}</a>
+      </div>
+    </header>
+    <main>
+      {% for children_data_list in children_data_lists%}
+        {%if children_data_list['author'] == None%}
+        <div>
+          [deleted]
+        </div>
+        <hr>
+        {%else%}
+        <div>
+        
+          <strong>{{children_data_list['author']}}:</strong>
+          <p></p><p>{{children_data_list['title'] | safe}}</p><p></p>
+        
+        </div>
+        <hr>
+        {%endif%}
+      {%endfor%}
+    </main>
+</body>
+
+</html>
